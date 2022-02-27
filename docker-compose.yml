@@ -22,13 +22,6 @@ services:
     container_name: mlcv_quanna_rasa_main
     networks:
     - chatbot
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - driver: nvidia
-            device_ids: ['0']
-            capabilities: [gpu]
 
   action:
     image: nguyenquang7501/cpp_learning_chatbot:latest
@@ -43,7 +36,7 @@ services:
     networks:
     - chatbot
   
-  db_and_log:
+  mongo:
     image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: rasa_chatbot
@@ -54,7 +47,18 @@ services:
       - mongodata/:/data/db
     restart: unless-stopped
     container_name: mlcv_quanna_mongodb_tracker_store
+    ports:
+      - 27017:27017
 
+  # event_broker:
+  #   image: nouchka/sqlite3:latest
+  #   stdin_open: true
+  #   tty: true
+  #   volumes:
+  #     - eventbroker:/root/db/
+  #   networks:
+  #     - chatbot
+  #   container_name: mlcv_quanna_sqlite_event_broker
 networks:
   chatbot: 
     external: true
@@ -62,3 +66,4 @@ networks:
 
 volumes:
   mongodata:
+  eventbroker:
