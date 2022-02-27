@@ -4,8 +4,8 @@ from rasa_nlu import config
 
 
 def test_nlu_interpreter():
-    training_data = load_data("data/nlu_converted.md")
-    trainer = Trainer(config.load("config.yml"))
+    training_data = load_data("../data/nlu_converted.md")
+    trainer = Trainer(config.load("../config.yml"))
     interpreter = trainer.train(training_data)
     test_interpreter_dir = trainer.persist(
         "./tests/models", project_name="nlu")

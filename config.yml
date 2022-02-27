@@ -19,7 +19,7 @@ pipeline:
   cache_dir: null
 - name: "DIETClassifier"
   entity_recognition: False
-  epochs: 200
+  epochs: 80
   tensorboard_log_directory: "./tensorboard/CRF/"
   tensorboard_log_level: "epoch"
 - name: FallbackClassifier
@@ -51,7 +51,7 @@ pipeline:
   "L2_c": 0.1
 - name: "EntitySynonymMapper"
 - name: "ResponseSelector"
-  epochs: 100
+  epochs: 80
   
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
