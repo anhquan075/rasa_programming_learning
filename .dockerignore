@@ -1,0 +1,4 @@
+.gitignore
+.git
+.vscode  
+__pyache__

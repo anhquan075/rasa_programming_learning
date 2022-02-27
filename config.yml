@@ -1,0 +1,86 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: "vi"
+
+pipeline:
+- name: "SpacyNLP"
+  # language model to load
+  model: "xx_ent_wiki_sm"
+
+  # when retrieving word vectors, this will decide if the casing
+  # of the word is relevant. E.g. `hello` and `Hello` will
+  # retrieve the same vector, if set to `False`. For some
+  # applications and models it makes sense to differentiate
+  # between these two words, therefore setting this to `True`.
+  case_sensitive: False
+- name: "SpacyTokenizer"
+  # Flag to check whether to split intents
+  "intent_tokenization_flag": False
+  # Symbol on which intent should be split
+  "intent_split_symbol": "_"
+  # Regular expression to detect tokens
+  "token_pattern": None
+- name: "CountVectorsFeaturizer"
+  "use_shared_vocab": False
+- name: "SpacyFeaturizer"
+  # Specify what pooling operation should be used to calculate the vector of
+  # the complete utterance. Available options: 'mean' and 'max'.
+  "pooling": "mean"
+- name: "RegexFeaturizer"
+  # Text will be processed with case sensitive as default
+  "case_sensitive": True
+- name: LexicalSyntacticFeaturizer
+  "features": [
+    ["low", "title", "upper"],
+    ["BOS", "EOS", "low", "upper", "title", "digit"],
+    ["low", "title", "upper"],
+  ]
+- name: "DIETClassifier"
+  entity_recognition: False
+  epochs: 300
+- name: "CRFEntityExtractor"
+  "BILOU_flag": True
+  # features to extract in the sliding window
+  "features": [
+    ["low", "title", "upper"],
+    [
+      "bias",
+      "low",
+      "prefix5",
+      "prefix2",
+      "suffix5",
+      "suffix3",
+      "suffix2",
+      "upper",
+      "title",
+      "digit",
+      "pattern",
+    ],
+    ["low", "title", "upper"],
+  ]
+  # The maximum number of iterations for optimization algorithms.
+  "max_iterations": 50
+  # weight of the L1 regularization
+  "L1_c": 0.1
+  # weight of the L2 regularization
+  "L2_c": 0.1
+  # Name of dense featurizers to use.
+  # If list is empty all available dense features are used.
+  "featurizers": []
+  # Indicated whether a list of extracted entities should be split into individual entities for a given entity type
+  "split_entities_by_comma":
+      address: False
+      email: True
+- name: "EntitySynonymMapper"
+- name: "ResponseSelector"
+
+  
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 3
+    random_seed: 42
+    epochs: 100
+  - name: RulePolicy

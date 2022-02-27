@@ -1,0 +1,9 @@
+/actions/__pycache__
+__pycache__
+.vscode
+out.log
+database
+data  
+data_json
+models
+.git

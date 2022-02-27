@@ -1,0 +1,304 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
+intents:
+- out_of_scope:
+    use_entities: []
+- continue_asking:
+    use_entities: []
+- dont_want_to_ask:
+    use_entities: []
+- nlu_fallback:
+    use_entities: []
+- cpplus_specific_video_tutorial_asking
+- cpplus_what_asking
+- cpplus_why_asking
+- want_to_practice_flowchart:
+    use_entities: []
+- greet:
+    use_entities: []
+- flowchart_asking
+- thanks:
+    use_entities: []
+- attention:
+    use_entities: []
+- health_inquire:
+    use_entities: []
+- goodbye:
+    use_entities: []
+- affirm:
+    use_entities: []
+- deny:
+    use_entities: []
+- compliment:
+    use_entities: []
+- feeling_good:
+    use_entities: []
+- insult:
+    use_entities: []
+- feeling_bad:
+    use_entities: []
+- stop_asking:
+    use_entities: []
+- want_to_ask:
+    use_entities: []
+- who_are_you:
+    use_entities: []
+- who_create_you:
+    use_entities: []
+- last_name:
+    use_entities: []
+- first_name:
+    use_entities: []
+- date:
+    use_entities: []
+- time:
+    use_entities: []
+- corona:
+    use_entities: []
+- restart:
+    use_entities: []
+- want_to_practice_cpp:
+    use_entites: []
+- want_to_watch_cpp_tutorial:
+    use_entites: []
+- dont_want_to_give_flowchart_quest_num:
+    use_entites: []
+- dont_want_to_give_cpp_content:
+    use_entites: []
+- cpp_practice
+- cpplus_how_asking
+- cpplus_when_asking
+- cpplus_where_asking
+- cpplus_example_asking
+entities:
+- cpplus_content
+- flowchart_quest_num
+slots:
+  cpplus_practice_content:
+    type: text
+    influence_conversation: false
+  flowchart_quest_num:
+    type: any
+    influence_conversation: false
+  cpplus_content:
+    type: text
+    influence_conversation: false
+  cpp_content_answer:
+    type: text
+    influence_conversation: false
+  flowchart_answer:
+    type: text
+    influence_conversation: false
+  requested_slot:
+    type: categorical
+    influence_conversation: true
+    values:
+    - cpplus_content
+    - flowchart_quest_num
+responses:
+  utter_author:
+  - image: https://media.giphy.com/media/eLjAaI1cYMnQrCpbRu/giphy.gif
+    text: Cảm ơn bạn đã quan tâm, mình đã được tạo ra bởi hai sinh viên là Nguyễn Lê Anh Quân và Dương Đình Thắng, hiện đang là sinh viên khoa Khoa học máy tính tại UIT - VNUHCM, dưới sự hướng dẫn của thầy Đỗ Văn Tiến. Nhờ công lao của họ mà mình mới có thể trò chuyện cùng bạn ngay lúc này nè ;)
+  utter_what_do_you_want:
+  - text: Vậy bạn muốn gì?
+  - text: Thế bạn cần gì?
+  utter_covid_symptom:
+  - text: |-
+      COVID-19 tác động đến mỗi người theo những cách khác nhau. Hầu hết những người nhiễm vi-rút sẽ có triệu chứng bệnh từ nhẹ đến trung bình và có thể hồi phục mà không cần nhập viện.
+
+      Các triệu chứng thường gặp nhất:
+      _ sốt
+      _ ho khan
+      _ mệt mỏi
+
+      Các triệu chứng ít gặp hơn:
+      _ đau nhức
+      _ đau họng
+      _ tiêu chảy
+      _ viêm kết mạc
+      _ đau đầu
+      _ mất vị giác hoặc khứu giác
+      _ da nổi mẩn hay ngón tay hoặc ngón chân bị tấy đỏ hoặc tím tái
+
+      Các triệu chứng nghiêm trọng:
+      _ khó thở
+      _ đau hoặc tức ngực
+      _ mất khả năng nói hoặc cử động
+
+      Hãy đi khám ngay lập tức nếu bạn gặp phải các triệu chứng nghiêm trọng. Luôn gọi điện trước khi gặp bác sĩ hoặc đến cơ sở y tế.
+  utter_covid_precautions:
+  - text: |-
+      Để ngăn chặn COVID-19 lây lan, hãy:
+      _ Đeo khâu trang ở nơi công cộng
+      _ Thường xuyên rửa tay. Dùng xà phòng và nước hoặc dung dịch rửa tay chứa cồn.
+      _ Giữ khoảng cách an toàn với những người đang ho hoặc hắt hơi.
+      _ Khi không thể giữ khoảng cách, hãy đeo khẩu trang.
+      _ Không chạm vào mắt, mũi hoặc miệng.
+      _ Khi ho hoặc hắt hơi, hãy dùng khăn giấy hoặc gập khuỷu tay lại để che mũi và miệng.
+      _ Hãy ở nhà khi bạn cảm thấy không khỏe.
+      _ Hãy đi khám nếu bạn bị sốt, ho và khó thở.
+  utter_covid_treatment:
+  - text: Cho đến nay, vẫn chưa có vắc-xin hoặc thuốc đặc hiệu cho COVID-19. Các nhà khoa học vẫn đang nghiên cứu phương pháp điều trị và sẽ kiểm chứng thông qua thử nghiệm lâm sàng.
+  utter_reply_stop_asking:
+  - text: Ok bạn nha, có vướng mắc gì về C++ thì cứ hỏi mình
+  - text: Ừa ok bạn, bạn có thể trở lại hỏi bất cứ khi nào nha
+  utter_reply_health_inquire:
+  - text: Dạo này mình vẫn ổn nha bạn, cảm ơn đã hỏi thăm mình nha
+  - text: Mình vẫn ổn nha, cảm ơn bạn nhiều
+  utter_reply_feeling_bad:
+  - text: Hãy quay về phía Mặt trời và bạn sẽ không thấy bóng tối – Helen Keller.
+  - text: Đừng buồn vì bụi hoa hồng có gai mà hãy vui vì trong bụi gai có hoa hồng - Abraham Lincoln.
+  utter_reply_feeling_good:
+  - text: Bạn ổn là mình vui rồi <3
+  - text: Bạn ổn làm mình cũng ổn theo luôn đó hihi
+  utter_reply_compliment:
+  - text: Hihi ngại quá
+  - text: Có gì đâu nè :3
+  utter_reply_thanks:
+  - text: Không có gì đâu nè ^^
+  - text: Có gì đâu hihi
+  - text: Giúp được bạn là nhiệm vụ của mình mà
+  utter_reply_insult:
+  - text: Mình không biết vì sao bạn lại chửi mình nhưng nếu mình có làm gì không phải ý mong bạn bỏ qua nha ><
+  - text: Sao bạn lại chửi mình zayy TT
+  - text: Đừng chửi tuii, tuii có làm gì bạn đâu ><
+  - text: Mày thích chửi hông ? Đó là người cục sục sẽ nói vậy, chứ đừng có chửi mình nha
+  - text: Tin nhắn đã được chuyển tiếp đến phòng công tác sinh viên. Cảm ơn bạn đã quan tâm.
+  utter_reply_deny:
+  - text: Bot đang trong giai đoạn hoàn thiện nên không tránh khỏi sai sót nên mong bạn thông cảm nha ^^
+  utter_reply_out_of_scope:
+  - buttons:
+    - payload: /continue_asking
+      title: Hỏi lại
+    - payload: /deny
+      title: Không hỏi
+    text: Xin lỗi, câu hỏi của bạn nằm ngoài lĩnh vực của mình (Mình không được tạo ra với mục đích giải bài tập cho các bạn), vui lòng hỏi lại hoặc từ chối bằng các tùy chọn bên dưới! 
+  utter_greet:
+  - text: Xin chào! Bạn khỏe không?
+  - text: Chào bạn, hôm nay bạn thế nào?
+  utter_did_that_help:
+  - text: Vừa rồi có giúp ích được gì cho bạn không?
+  - text: Câu trả lời của mình có giúp gì được cho bạn không ?
+  utter_happy:
+  - text: Tuyệt vời, cố gắng phát huy nhé!
+  - text: Bạn giỏi thật đó!
+  - text: Hoàn hảo luôn
+  utter_goodbye:
+  - text: Tạm biệt, hẹn gặp lại bạn sau
+  - text: Chào bạn nha
+  - text: Vâng, hẹn hôm khác nói chuyện tiếp nha
+  utter_who_i_am:
+  - text: Mình là trợ lý học tập, mình có thể hỗ trợ các bạn việc học nhập môn lập trình với ngôn ngữ C++!
+  - text: Mình là một botchat hỗ trợ các bạn trong môn Nhập môn lập trình với ngôn ngữ C++
+  utter_ask_to_do:
+  - buttons:
+    - payload: /want_to_ask
+      title: Hỏi các kiến thức về C++
+    - payload: /want_to_practice_flowchart
+      title: Làm bài tập lưu đồ thuật toán (flowchart)
+    - payload: /want_to_watch_cpp_tutorial
+      title: Xem video bài giảng Nhập môn lập trình
+    text: Vui lòng chọn các tùy chọn bên dưới
+  utter_accept_questions:
+  - text: Bạn hỏi đi, mình có thể giúp bạn trả lời các câu hỏi liên quan đến C++
+  - text: Bạn cứ hỏi, mình sẽ trả lời cho các bạn bất cứ câu hỏi gì về C++
+  - text: Mình có thể trả lời các câu hỏi liên quan đến C++, bạn cứ việc hỏi đi ạ
+  utter_answer_cpplus_questions:
+  - text: Đây là câu trả lời của bạn
+  utter_ok:
+  - text: Ok bạn nha
+  - text: Ừa ok bạn
+  - text: Okelaaa
+  utter_thanks:
+  - text: Cảm ơn bạn đã sử dụng dịch vụ
+  - text: Cảm ơn bạn nhiều nhiều nè
+  utter_sorry:
+  - text: Xin lỗi bạn
+  - text: Thành thật xin lỗi bạn nhiều
+  utter_wtf:
+  - text: Mình chưa hiểu câu của bạn lắm >< Bạn có thể nói lại được không ạ?
+  - text: Bạn có thể nói lại rõ hơn được không? Mình chưa hiểu ý bạn lắm ><
+  utter_please_rephrase:
+  - text: Xin lỗi, mình chưa hiểu ý bạn lắm. Bạn có thể nói rõ hơn một tí được hong?
+  - text: Bạn có thể nói lại được không, mình không hiểu ý bạn cho lắm.
+  utter_may_i_help_u:
+  - text: Vâng, mình đang nghe đây
+  - text: Mình đây bạn
+  - text: Tui đây tui đây
+  utter_ask_first_name:
+  - text: Cho mình hỏi họ của bạn được hông
+  - text: Cho mình xin họ của bạn đi nè
+  - text: Cho phép mình xin họ của bạn nhé
+  utter_ask_last_name:
+  - text: Vậy cho mình hỏi tên của bạn được hông
+  - text: Tiếp theo cho mình xin tên của bạn đi nè
+  - text: Mình xin phép được hỏi tên của bạn có được hông
+  utter_ask_anything_else:
+  - text: Bạn có muốn hỏi thêm gì không?
+  - text: Bạn có cần hỏi thêm gì không?
+  utter_ask_flowchart_question_number:
+  - text: Bạn muốn hỏi câu số mấy vậy ạ?
+  - text: Bạn muốn hỏi câu số bao nhiêu nè?
+  utter_ask_cpp_content:
+  - text: Bạn muốn hỏi về nội dung gì trong C++ vậy ạ?
+  utter_ask_which_video_tutorial:
+  - text: Bạn muốn xem video bài giảng về nội dung gì trong C++ vậy ạ?
+  utter_explain_why_need_flowchart_num:
+  - text: Mình cần số câu hỏi cụ thể để tiện cho việc truy xuất thông tin nên phiền bạn cung cấp số câu hỏi cụ thể ạ. Bạn thông cảm giúp mình nha.
+  utter_explain_why_need_cpp_content:
+  - text: Mình cần có một nội dung cụ thể để tiện cho việc truy xuất thông tin nên phiền bạn cung cấp thông tin chi tiết hơn ạ. Bạn thông cảm giúp mình nha.
+actions:
+- action_ask_date
+- action_ask_time
+- action_cpplus_content_answer
+- action_cpplus_practice
+- action_first_name
+- action_flowchart_practice_answer
+- utter_accept_questions
+- utter_answer_cpplus_questions
+- utter_ask_anything_else
+- utter_ask_cpp_content
+- utter_ask_first_name
+- utter_ask_flowchart_question_number
+- utter_ask_last_name
+- utter_ask_to_do
+- utter_ask_which_video_tutorial
+- utter_author
+- utter_covid_precautions
+- utter_covid_symptom
+- utter_covid_treatment
+- utter_did_that_help
+- utter_explain_why_need_cpp_content
+- utter_explain_why_need_flowchart_num
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_may_i_help_u
+- utter_ok
+- utter_reply_compliment
+- utter_reply_deny
+- utter_reply_feeling_bad
+- utter_reply_feeling_good
+- utter_reply_health_inquire
+- utter_reply_insult
+- utter_reply_out_of_scope
+- utter_reply_stop_asking
+- utter_reply_thanks
+- utter_sorry
+- utter_thanks
+- utter_what_do_you_want
+- utter_who_i_am
+- utter_wtf
+- validate_cpp_content_form
+- validate_flowchart_quest_num_form
+forms:
+  cpp_content_form:
+    cpplus_content:
+    - entity: cpplus_content
+      type: from_entity
+  flowchart_quest_num_form:
+    flowchart_quest_num:
+    - entity: flowchart_quest_num
+      type: from_entity

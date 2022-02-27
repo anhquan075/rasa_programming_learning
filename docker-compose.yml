@@ -1,0 +1,64 @@
+version: '3.9'
+
+services:
+  main:
+    image: nguyenquang7501/cpp_learning_chatbot:latest
+    restart: on-failure
+    tty: true
+    command: 
+      - run 
+      - --enable-api 
+      - -t thisismysecret 
+      - -m models/20210421-152837.tar.gz 
+      - --cors 
+      - "*"
+      - --log-file 
+      - out.log
+      - -p 5005
+    ports: 
+      - "5005:5005"
+    depends_on:
+    - action
+    container_name: mlcv_quanna_rasa_main
+    networks:
+    - chatbot
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]
+
+  action:
+    image: nguyenquang7501/cpp_learning_chatbot:latest
+    restart: on-failure
+    tty: true
+    command: 
+      - run  
+      - actions  
+    ports: 
+      - "5055:5055"
+    container_name: mlcv_quanna_rasa_action
+    networks:
+    - chatbot
+  
+  db_and_log:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rasa_chatbot
+      MONGO_INITDB_ROOT_PASSWORD: rasa_chatbot
+    networks:
+      - chatbot
+    volumes:
+      - mongodata/:/data/db
+    restart: unless-stopped
+    container_name: mlcv_quanna_mongodb_tracker_store
+
+networks:
+  chatbot: 
+    external: true
+    driver: bridge
+
+volumes:
+  mongodata:
