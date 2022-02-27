@@ -1,0 +1,17 @@
+language: python
+sudo: enabled
+cache:
+  directories:
+  - $HOME/.cache/pip
+  - /tmp/cached/
+python:
+- '3.5'
+- '3.6'
+install:
+- pip install -r requirements.txt
+- pip install pytest==3.5.1
+- pip install rasa_nlu==2.3.2
+- pip install rasa_core==2.3.2
+- pip install rasa_core_sdk==2.3.2
+script:
+- python -m pytest tests
