@@ -2,8 +2,7 @@
 __pycache__
 .vscode
 out.log
-database
-data  
+database  
 data_json
 models
 .git

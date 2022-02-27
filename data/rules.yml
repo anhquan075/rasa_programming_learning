@@ -1,0 +1,103 @@
+version: "2.0"
+rules:
+- rule: Ask for covid-19 information
+  steps:
+  - intent: corona
+  - action: utter_covid_symptom
+  - action: utter_covid_precautions
+  - action: utter_covid_treatment
+  wait_for_user_input: false
+
+- rule: Activate form asking practice flowchart
+  steps:
+  - intent: flowchart_asking
+  - action: flowchart_quest_num_form
+  - active_loop: flowchart_quest_num_form
+
+- rule: Activate form asking example
+  steps:
+  - intent: cpplus_example_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+
+- rule: Activate form asking what
+  steps:
+  - intent: cpplus_what_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+
+- rule: Activate form asking why
+  steps:
+  - intent: cpplus_why_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+
+- rule: Activate form asking how
+  steps:
+  - intent: cpplus_how_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+
+- rule: Activate form asking when
+  steps:
+  - intent: cpplus_when_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+
+- rule: Activate form asking where
+  steps:
+  - intent: cpplus_where_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+
+- rule: Ask who created bot
+  steps:
+  - intent: who_create_you
+  - action: utter_author
+  wait_for_user_input: false
+
+- rule: out of scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_reply_out_of_scope
+  - action: utter_who_i_am
+  wait_for_user_input: false
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+  wait_for_user_input: false
+
+- rule: greeting
+  conversation_start: true
+  steps:
+  - intent: greet 
+  - action: utter_greet
+  - action: utter_who_i_am
+  - action: utter_ask_to_do
+
+- rule: thanks
+  steps:
+  - intent: thanks
+  - action: utter_reply_thanks
+  wait_for_user_input: false
+
+- rule: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: utter_thanks
+  wait_for_user_input: false
+
+- rule: health_inquire
+  steps:
+  - intent: health_inquire
+  - action: utter_reply_health_inquire
+  wait_for_user_input: false
+
+- rule: insult_bot
+  steps:
+  - intent: insult
+  - action: utter_reply_insult
+  wait_for_user_input: false

@@ -1,0 +1,1884 @@
+version: "2.0"
+stories:
+- story: happy path
+  steps:
+  - intent: feeling_good
+  - action: utter_reply_feeling_good
+
+- story: ask about the authors
+  steps:
+  - intent: who_create_you
+  - action: utter_author
+  
+- story: who are you
+  steps:
+  - intent: who_are_you
+  - action: utter_who_i_am
+
+- story: sad path 1
+  steps:
+  - intent: feeling_bad
+  - action: utter_reply_feeling_bad
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: feeling_bad
+  - action: utter_reply_feeling_bad
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+
+- story: dont want to ask 1
+  steps:
+  - intent: dont_want_to_ask
+  - action: utter_what_do_you_want
+
+- story: dont want to ask 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: dont_want_to_ask
+  - action: utter_what_do_you_want
+
+- story: stop asking
+  steps:
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+
+- story: pay attention to me plz
+  steps:
+  - intent: attention
+  - action: utter_may_i_help_u
+
+- story: unknown asking 1
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+
+- story: unknown asking 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+
+- story: c++ what asking 1
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ what asking 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ what asking 3
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: compliment
+  - action: utter_reply_compliment
+
+- story: c++ what asking 4
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+  - action: utter_thanks
+
+- story: c++ what asking 5
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - action: utter_accept_questions
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ what asking 6
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+
+- story: c++ what asking 7
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+  - intent: affirm
+
+- story: c++ why asking 1
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ why asking 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ why asking 3
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: compliment
+  - action: utter_reply_compliment
+
+- story: c++ why asking 4
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+  - action: utter_thanks
+
+- story: c++ why asking 5
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - action: utter_accept_questions
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ why asking 6
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+
+- story: c++ why asking 7
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+  - intent: affirm
+
+- story: c++ how asking 1
+  steps:
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ how asking 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ how asking 3
+  steps:
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: compliment
+  - action: utter_reply_compliment
+
+- story: c++ how asking 4
+  steps:
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+  - action: utter_thanks
+
+- story: c++ how asking 5
+  steps:
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - action: utter_accept_questions
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ how asking 6
+  steps:
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+
+- story: c++ how asking 7
+  steps:
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+  - intent: affirm
+
+- story: c++ when asking 1
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ when asking 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ when asking 3
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: compliment
+  - action: utter_reply_compliment
+
+- story: c++ when asking 4
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+  - action: utter_thanks
+
+- story: c++ when asking 5
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - action: utter_accept_questions
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ when asking 6
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+
+- story: c++ when asking 7
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+  - intent: affirm
+
+- story: c++ where asking 1
+  steps:
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ where asking 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ where asking 3
+  steps:
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: compliment
+  - action: utter_reply_compliment
+
+- story: c++ where asking 4
+  steps:
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+  - action: utter_thanks
+
+- story: c++ where asking 5
+  steps:
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - action: utter_accept_questions
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ where asking 6
+  steps:
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+
+- story: c++ where asking 7
+  steps:
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+  - intent: affirm
+
+- story: c++ example asking 1
+  steps:
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ example asking 2
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ example asking 3
+  steps:
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: compliment
+  - action: utter_reply_compliment
+
+- story: c++ example asking 4
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: stop_asking
+  - action: utter_reply_stop_asking
+  - action: utter_thanks
+
+- story: c++ example asking 5
+  steps:
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - action: utter_accept_questions
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: c++ example asking 6
+  steps:
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+
+- story: c++ example asking 7
+  steps:
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_reply_deny
+  - intent: affirm
+
+- story: anything else? - yes
+  steps:
+  - action: utter_ask_anything_else
+  - intent: affirm
+  - action: utter_accept_questions
+
+- story: anything else? - no / pos
+  steps:
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_ok
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_thanks
+
+- story: anything else? - no / neg
+  steps:
+  - action: utter_ask_anything_else
+  - intent: deny
+  - action: utter_ok
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+
+- story: anything else - dive into what
+  steps:
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: anything else - dive into why
+  steps:
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: anything else - dive into how
+  steps:
+  - action: utter_ask_anything_else
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: anything else - dive into when
+  steps:
+  - action: utter_ask_anything_else
+  - intent: cpplus_when_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: anything else - dive into where
+  steps:
+  - action: utter_ask_anything_else
+  - intent: cpplus_where_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: anything else - dive into example
+  steps:
+  - action: utter_ask_anything_else
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: Story from Conversation ID 4b468056995f46a9b8bc1bf772e1283a
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_who_i_am
+  - action: utter_ask_to_do
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: pointer
+  - slot_was_set:
+    - cpplus_content: pointer
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: pointer
+  - slot_was_set:
+    - cpplus_content: pointer
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: pointer
+  - slot_was_set:
+    - cpplus_content: pointer
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: pointer
+  - slot_was_set:
+    - cpplus_content: pointer
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: variable
+  - slot_was_set:
+    - cpplus_content: variable
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: variable
+  - slot_was_set:
+    - cpplus_content: variable
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: variable
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - intent: cpplus_why_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: variable
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: switch
+  - slot_was_set:
+    - cpplus_content: switch
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: switch
+  - slot_was_set:
+    - cpplus_content: switch
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_how_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: switch
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: vector
+  - slot_was_set:
+    - cpplus_content: vector
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: vector
+  - slot_was_set:
+    - cpplus_content: vector
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: vector
+  - slot_was_set:
+    - cpplus_content: vector
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: vector
+  - slot_was_set:
+    - cpplus_content: vector
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: vector
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - intent: cpplus_why_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: function
+  - slot_was_set:
+    - cpplus_content: function
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: function
+  - slot_was_set:
+    - cpplus_content: function
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: function
+  - slot_was_set:
+    - cpplus_content: function
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: function
+  - slot_was_set:
+    - cpplus_content: function
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_example_asking
+    entities:
+    - cpplus_content: array
+  - slot_was_set:
+    - cpplus_content: array
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: array
+  - slot_was_set:
+    - cpplus_content: array
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - slot_was_set:
+    - cpp_content_answer: ' '
+  - action: utter_ask_anything_else
+  - intent: cpplus_example_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: array
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - intent: restart
+  - action: action_restart
+  - intent: cpplus_example_asking
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - requested_slot: cpplus_content
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - action: cpp_content_form
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - intent: greet
+  - action: utter_greet
+  - action: utter_who_i_am
+
+- story: i want to practice flowchart 
+  steps:
+  - intent: want_to_practice_flowchart
+  - action: utter_ok
+  - action: utter_ask_flowchart_question_number
+  - intent: flowchart_asking
+    entities:
+    - flowchart_quest_num: "1"
+  - action: flowchart_quest_num_form
+  - active_loop: flowchart_quest_num_form
+  - active_loop: null
+  - action: action_flowchart_practice_answer
+  - action: utter_ask_anything_else
+
+- story: direct flowchart asking (having question number)
+  steps:
+  - intent: flowchart_asking
+    entities:
+    - flowchart_quest_num: "1"
+  - action: flowchart_quest_num_form
+  - active_loop: flowchart_quest_num_form
+  - active_loop: null
+  - action: action_flowchart_practice_answer
+  - action: utter_ask_anything_else
+
+- story: i want to practice cpp
+  steps:
+  - intent: cpp_practice
+    entities:
+      - cpplus_content: cplusplus
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: utter_ok
+  - action: action_cpplus_practice
+
+- story: flowchart asking interjection
+  steps:
+  - intent: want_to_practice_flowchart
+  - action: utter_ok
+  - action: utter_ask_flowchart_question_number
+  - action: flowchart_quest_num_form
+  - active_loop: flowchart_quest_num_form
+  - slot_was_set:
+    - requested_slot: flowchart_quest_num
+  - intent: dont_want_to_give_flowchart_quest_num
+  - action: utter_explain_why_need_flowchart_num
+  - action: flowchart_quest_num_form
+
+- story: cpp practice asking interjection
+  steps:
+  - intent: want_to_practice_cpp
+  - action: utter_ok
+  - action: utter_ask_cpp_content
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - slot_was_set:
+    - requested_slot: cpplus_content
+  - intent: dont_want_to_give_cpp_content
+  - action: utter_explain_why_need_cpp_content
+  - action: cpp_content_form
+  
+- story: interactive_story_1
+  steps:
+  - intent: out_of_scope
+  - action: utter_reply_out_of_scope
+  - action: utter_who_i_am
+  - intent: out_of_scope
+  - action: utter_reply_out_of_scope
+  - action: utter_who_i_am
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - action: cpp_content_form
+  - intent: out_of_scope
+  - action: utter_reply_out_of_scope
+  - action: utter_who_i_am
+
+- story: cpp 2 times what asking
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp 2 times what asking
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp 3 times what asking
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp 4 times what asking
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp multiple intents asking (what - why)
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp mutilple intents asking (what-why-how)
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_how_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp mutilple intents asking (what-why-why)
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp mutilple intents asking (what-why-what)
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp mutilple intents asking (what-why-how)
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp 2 times why asking
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp 3 times why asking
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp 4 times why asking
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp multiple intents asking (why - what)
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp multiple intents asking (why - what - what)
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp multiple intents asking (why - why - what)
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: cpp multiple intents asking (why - what - why)
+  steps:
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: tent to ask then multiple what asking
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: tent to ask then multiple what asking
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: affirm
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: want to watch c++ video tutorials
+  steps:
+  - intent: want_to_watch_cpp_tutorial
+  - action: utter_ok
+  - action: utter_ask_which_video_tutorial
+  - intent: cpplus_specific_video_tutorial_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null 
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: want to watch a specific c++ video tutorials
+  steps:
+  - intent: cpplus_specific_video_tutorial_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null 
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_who_i_am
+  - action: utter_ask_to_do
+  - intent: want_to_practice_flowchart
+  - action: utter_ok
+  - action: utter_ask_flowchart_question_number
+  - intent: flowchart_asking
+    entities:
+    - flowchart_quest_num: '1'
+  - slot_was_set:
+    - flowchart_quest_num: '1'
+  - action: flowchart_quest_num_form
+  - action: action_flowchart_practice_answer
+  - action: utter_ask_anything_else
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+  - intent: thanks
+  - action: utter_reply_thanks
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: cplusplus
+  - slot_was_set:
+    - cpplus_content: cplusplus
+  - action: cpp_content_form
+  - action: action_cpplus_content_answer
+  - action: cpp_content_form
+  - action: action_cpplus_content_answer
+
+- story: want to ask cpp questions 2.0
+  steps:
+  - intent: want_to_ask
+  - action: utter_accept_questions
+  - intent: affirm
+  - intent: cpplus_what_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: want to watch tutorials and ask review its definition
+  steps:
+  - intent: want_to_watch_cpp_tutorial
+  - action: utter_ok
+  - action: utter_ask_which_video_tutorial
+  - intent: cpplus_specific_video_tutorial_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - intent: cpplus_what_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form 
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: want to watch tutorials and ask why we need to learn it 
+  steps:
+  - intent: want_to_watch_cpp_tutorial
+  - action: utter_ok
+  - action: utter_ask_which_video_tutorial
+  - intent: cpplus_specific_video_tutorial_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: continue_asking
+  - intent: cpplus_why_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form 
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: multiple what asking then ask author 
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: who_create_you
+  - action: utter_author
+
+- story: it's just random asking 1
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: flowchart_asking
+    entities:
+    - flowchart_quest_num: "1"
+  - action: flowchart_quest_num_form
+  - active_loop: flowchart_quest_num_form
+  - active_loop: null
+  - action: action_flowchart_practice_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_specific_video_tutorial_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: it's just random asking 1
+  steps:
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_what_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: flowchart_asking
+    entities:
+    - flowchart_quest_num: "1"
+  - action: flowchart_quest_num_form
+  - active_loop: flowchart_quest_num_form
+  - active_loop: null
+  - action: action_flowchart_practice_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_why_asking
+    entities:
+    - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+  - intent: cpplus_specific_video_tutorial_asking
+    entities:
+      - cpplus_content: c++
+  - action: cpp_content_form
+  - active_loop: cpp_content_form
+  - active_loop: null
+  - action: action_cpplus_content_answer
+  - action: utter_ask_anything_else
+
+- story: interactive_story_2
+  steps:
+  - intent: out_of_scope
+  - action: utter_reply_out_of_scope
+  - action: utter_who_i_am
+  - intent: continue_asking
+  - action: utter_accept_questions
+  - intent: dont_want_to_ask
+  - action: utter_what_do_you_want
