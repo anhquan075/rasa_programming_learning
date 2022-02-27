@@ -10,8 +10,8 @@ python:
 install:
 - pip install -r requirements.txt
 - pip install pytest==3.5.1
-- pip install rasa_nlu==2.3.2
-- pip install rasa_core==2.3.2
-- pip install rasa_core_sdk==2.3.2
+- pip install rasa_nlu --upgrade
+- pip install rasa_core --upgrade
+- pip install rasa_core_sdk --upgrade
 script:
 - python -m pytest tests
