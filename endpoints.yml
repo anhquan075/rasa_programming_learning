@@ -43,7 +43,7 @@ tracker_store:
 # Event broker which all conversation events should be streamed to.
 # https://rasa.com/docs/rasa/api/event-brokers/
 
-event_broker:
-  type: SQL
-  dialect: sqlite
-  db: database/events.db
+# event_broker:
+#   type: SQL
+#   dialect: sqlite
+#   db: database/events.db
